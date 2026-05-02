@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thalomex – engineering consultancy voor mechanische conceptontwikkeling, PoC-ontwerp en mechatronische integratie." />
+  <title>Thalomex – Engineering Consultancy</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --clr-bg:       #ffffff;
+      --clr-surface:  #f5f5f5;
+      --clr-accent:   #1a1a2e;   /* donkerblauw – aanpassen naar merkkleur */
+      --clr-text:     #1c1c1c;
+      --clr-muted:    #6b6b6b;
+      --clr-border:   #e0e0e0;
+      --max-w:        860px;
+      --gap:          2rem;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.65;
+    }
+
+    /* ── Layout helpers ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section { padding: 4rem 0; }
+    section + section { border-top: 1px solid var(--clr-border); }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+      color: var(--clr-accent);
+    }
+
+    p { color: var(--clr-text); }
+    p + p { margin-top: 0.75rem; }
+
+    /* ── Header / nav ── */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--clr-bg);
+      border-bottom: 1px solid var(--clr-border);
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.5rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--clr-accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--clr-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--clr-accent); }
+
+    /* ── Hero ── */
+    #hero {
+      padding: 5rem 0 4rem;
+      border-top: none;
+    }
+
+    #hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--clr-accent);
+      max-width: 620px;
+      margin-bottom: 1.2rem;
+    }
+
+    #hero .tagline {
+      font-size: 1.1rem;
+      color: var(--clr-muted);
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.4rem;
+      background: var(--clr-accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    /* ── Diensten grid ── */
+    .diensten-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .dienst-kaart {
+      background: var(--clr-surface);
+      border-radius: 8px;
+      padding: 1.25rem 1.25rem 1.5rem;
+    }
+
+    .dienst-kaart .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .dienst-kaart strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--clr-accent);
+    }
+
+    .dienst-kaart p {
+      font-size: 0.875rem;
+      color: var(--clr-muted);
+    }
+
+    /* ── Voor wie ── */
+    .voor-wie-lijst {
+      list-style: none;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .voor-wie-lijst li {
+      display: flex;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      color: var(--clr-text);
+    }
+
+    .voor-wie-lijst li::before {
+      content: "→";
+      color: var(--clr-accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Werkwijze ── */
+    .stappen {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      counter-reset: stap;
+    }
+
+    .stap {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .stap-nr {
+      counter-increment: stap;
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stap-nr::before { content: counter(stap); }
+
+    .stap-tekst strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .stap-tekst p {
+      font-size: 0.875rem;
+      color: var(--clr-muted);
+    }
+
+    /* ── Contact ── */
+    #contact .contact-blok {
+      background: var(--clr-surface);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-regel {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .contact-regel .label {
+      color: var(--clr-muted);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .contact-regel a {
+      color: var(--clr-accent);
+      text-decoration: none;
+    }
+
+    .contact-regel a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--clr-border);
+      padding: 2rem 0;
+      font-size: 0.8rem;
+      color: var(--clr-muted);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      .nav-links { display: none; }
+      .diensten-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="#hero">Thalomex</a>
+      <ul class="nav-links">
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section id="hero">
+    <div class="container">
+      <h1>Engineering consultancy voor technisch complexe vraagstukken</h1>
+      <p class="tagline">
+        Van concept tot bewijs — snel, scherp en zonder overhead.
+        Mechanische conceptontwikkeling, PoC-ontwerp en mechatronische integratie.
+      </p>
+      <a class="btn" href="#contact">Neem contact op</a>
+    </div>
+  </section>
+
+  <!-- ── Diensten ── -->
+  <section id="diensten">
+    <div class="container">
+      <h2>Wat ik doe</h2>
+      <p>Ik help technische teams verder wanneer ze snel een ervaren engineer nodig hebben — zonder langdurige trajecten of uitgebreide documentatieverplichtingen.</p>
+      <div class="diensten-grid">
+        <div class="dienst-kaart">
+          <span class="icon">⚙️</span>
+          <strong>Conceptontwikkeling</strong>
+          <p>Van vage behoefte naar een concreet mechanisch concept, inclusief CAD en toelichting.</p>
+        </div>
+        <div class="dienst-kaart">
+          <span class="icon">🔬</span>
+          <strong>PoC-ontwerp</strong>
+          <p>Proof of concept ontwerpen die snel gebouwd en gevalideerd kunnen worden.</p>
+        </div>
+        <div class="dienst-kaart">
+          <span class="icon">📐</span>
+          <strong>Haalbaarheidsanalyse</strong>
+          <p>Technische feasibility snel en onderbouwd beoordelen — inclusief trade-offs.</p>
+        </div>
+        <div class="dienst-kaart">
+          <span class="icon">🤝</span>
+          <strong>Technisch sparren</strong>
+          <p>Klankbord op PhD-niveau voor mechatronische integratievragen en ontwerpkeuzes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Voor wie ── -->
+  <section id="voor-wie">
+    <div class="container">
+      <h2>Voor wie</h2>
+      <p>Thalomex werkt voor organisaties die snel technische expertise nodig hebben, zonder de overhead van een groot bureau.</p>
+      <ul class="voor-wie-lijst">
+        <li>Startups en scale-ups met een hardware-component</li>
+        <li>R&amp;D-afdelingen die een externe technische blik zoeken</li>
+        <li>Techbedrijven met een acuut mechanisch of mechatronisch vraagstuk</li>
+        <li>Teams die een concept willen valideren vóórdat ze doorontwikkelen</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Werkwijze ── -->
+  <section id="werkwijze">
+    <div class="container">
+      <h2>Werkwijze</h2>
+      <p>Geen lange intake, geen uitgebreid projectplan. Direct van vraag naar resultaat.</p>
+      <div class="stappen">
+        <div class="stap">
+          <div class="stap-nr"></div>
+          <div class="stap-tekst">
+            <strong>Kort gesprek</strong>
+            <p>Je legt de vraag voor — ik stel de juiste technische vragen terug.</p>
+          </div>
+        </div>
+        <div class="stap">
+          <div class="stap-nr"></div>
+          <div class="stap-tekst">
+            <strong>Offerte op dagdeelbasis</strong>
+            <p>Duidelijk van tevoren: scope, aanpak en tarief (€90–100/uur excl. btw).</p>
+          </div>
+        </div>
+        <div class="stap">
+          <div class="stap-nr"></div>
+          <div class="stap-tekst">
+            <strong>Oplevering</strong>
+            <p>Conceptbeschrijving, CAD (.STEP), berekening of mondelinge toelichting — wat past bij de vraag.</p>
+          </div>
+        </div>
+        <div class="stap">
+          <div class="stap-nr"></div>
+          <div class="stap-tekst">
+            <strong>Evaluatie &amp; vervolg</strong>
+            <p>Korte terugkoppeling. Indien gewenst doorpakken naar de volgende fase.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Heb je een concreet vraagstuk of wil je eerst vrijblijvend sparren? Stuur een bericht.</p>
+      <div class="contact-blok">
+        <div class="contact-regel">
+          <span class="label">E-mail</span>
+          <!-- Vervang door jouw zakelijk e-mailadres -->
+          <a href="mailto:bas@thalomex.nl">bas@thalomex.nl</a>
+        </div>
+        <div class="contact-regel">
+          <span class="label">LinkedIn</span>
+          <!-- Vervang door jouw LinkedIn-URL -->
+          <a href="https://linkedin.com/in/bashuisman" target="_blank" rel="noopener">linkedin.com/in/bashuisman</a>
+        </div>
+        <div class="contact-regel">
+          <span class="label">KvK</span>
+          <span><!-- Voeg KvK-nummer toe --></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="container">
+      <span>© 2026 Thalomex – Bas Huisman</span>
+      <span>Alle prijzen excl. btw</span>
+    </div>
+  </footer>
+
+</body>
+</html>
