@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Bas Huisman – engineering consultant. Mechanical concept development, PoC design and mechatronic integration via Thalomex." />
+  <meta name="description" content="Bas Huisman – engineering consultant. Mechanische conceptontwikkeling, PoC-ontwerp en mechatronische integratie via Thalomex." />
   <title>Bas Huisman – Thalomex</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,13 +69,11 @@
     .divider { border: none; border-top: 1px solid var(--border); }
 
     /* ─── Floating logo ──────────────────────────────────────────── */
-    /* Single logo element that lives at center of hero and flies to nav */
     #floating-logo {
       position: fixed;
       z-index: 300;
       pointer-events: none;
       transform-origin: left top;
-      /* Position set by JS */
     }
 
     #floating-logo img {
@@ -103,7 +101,7 @@
     .nav-inner {
       display: flex;
       align-items: center;
-      justify-content: flex-end; /* links on the right; logo is floating */
+      justify-content: flex-end;
       height: var(--nav-h);
       max-width: var(--max);
       margin: 0 auto;
@@ -172,7 +170,6 @@
 
     .hero-cta:hover { opacity: 0.9; }
 
-    /* Scroll hint */
     .scroll-hint {
       margin-top: 3rem;
       color: rgba(255,255,255,0.25);
@@ -200,14 +197,12 @@
       margin-top: 3rem;
     }
 
-    /* ── Photo column ── */
     .about-photo-col {
       display: flex;
       flex-direction: column;
       align-items: stretch;
     }
 
-    /* Engineering drawing frame: corner L-brackets via CSS gradients */
     .photo-frame {
       position: relative;
       padding: 10px;
@@ -230,7 +225,6 @@
       aspect-ratio: 3 / 4;
     }
 
-    /* Title-block caption — like a drawing title block */
     .photo-caption {
       margin-top: 0;
       border: 1px solid var(--border);
@@ -259,7 +253,6 @@
       line-height: 1.4;
     }
 
-    /* ── Content column ── */
     .about-content p {
       color: var(--muted);
       margin-bottom: 1rem;
@@ -268,7 +261,6 @@
 
     .about-content p:last-of-type { margin-bottom: 0; }
 
-    /* Horizontal stats strip — component datasheet style */
     .about-stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -383,7 +375,6 @@
     #contact .section-label { color: rgba(255,255,255,0.45); }
     #contact h2              { color: var(--white); }
 
-    /* Reticle decorative SVG */
     .contact-reticle {
       position: absolute;
       right: -90px;
@@ -400,7 +391,7 @@
       gap: 4rem;
       align-items: start;
       margin-top: 3rem;
-      position: relative; /* keep above reticle */
+      position: relative;
       z-index: 1;
     }
 
@@ -534,49 +525,49 @@
 </head>
 <body>
 
-  <!-- ── Floating logo (animates from hero center → nav) ── -->
+  <!-- ── Zwevend logo (animeert van hero-midden → nav) ── -->
   <div id="floating-logo">
     <img class="fl-white" src="logo_white.png" alt="Thalomex" />
     <img class="fl-dark"  src="logo_dark.png"  alt="Thalomex" />
   </div>
 
-  <!-- ── Nav (no logo here — floating logo takes that role) ── -->
+  <!-- ── Nav ── -->
   <nav id="nav">
     <div class="nav-inner">
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">Over mij</a></li>
+        <li><a href="#experience">Ervaring</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="lang-switch">
-        <a href="index.html" class="active">EN</a>
+        <a href="index.html">EN</a>
         <span class="lang-sep">|</span>
-        <a href="nl.html">NL</a>
+        <a href="nl.html" class="active">NL</a>
       </div>
     </div>
   </nav>
 
-  <!-- ── Floating contact button ── -->
-  <a class="contact-fab" href="#contact" id="contact-fab">Get in touch →</a>
+  <!-- ── Zwevende contactknop ── -->
+  <a class="contact-fab" href="#contact" id="contact-fab">Neem contact op →</a>
 
   <!-- ── Hero ── -->
   <section id="hero">
     <div class="hero-text">
       <p class="hero-label">Engineering Consultant</p>
-      <p class="hero-sub">From technical question to concrete concept —<br>fast, sharp, and without overhead.</p>
-      <a class="hero-cta" href="#contact">Get in touch →</a>
+      <p class="hero-sub">Van technische vraag tot concreet concept —<br>snel, scherp en zonder overhead.</p>
+      <a class="hero-cta" href="#contact">Neem contact op →</a>
       <div class="scroll-hint">↓</div>
     </div>
   </section>
 
-  <!-- ── About ── -->
+  <!-- ── Over mij ── -->
   <section id="about" class="section">
     <div class="wrap">
-      <p class="section-label fade-in">About</p>
-      <h2 class="fade-in">Engineer with a passion for creating precision</h2>
+      <p class="section-label fade-in">Over mij</p>
+      <h2 class="fade-in">Ingenieur met een passie voor precisie</h2>
       <div class="about-grid">
 
-        <!-- Photo with engineering drawing frame -->
+        <!-- Foto met technisch tekeningframe -->
         <div class="about-photo-col fade-in">
           <div class="photo-frame">
             <img src="photo_bas.jpg" alt="Bas Huisman" />
@@ -589,19 +580,19 @@
 
         <!-- Bio + stats strip + tags -->
         <div class="about-content fade-in">
-          <p>I'm a mechanical engineer with a strong belief that innovative design follows from practical experience — and from simply making things yourself. I have spent years working hands-on at Prodrive Technologies alongside my studies, which shaped how I approach design: grounded, manufacturable, and focused on what actually works.</p>
-          <p>I completed my MSc in Mechanical Engineering at TU/e (cum laude internships at both EPC and TNO) and I'm currently a PhD candidate at the Control Systems Technology group under Prof. Maarten Steinbuch, working on precision mechatronics for ASML-related high-tech systems. The problems I find most interesting sit at the intersection of conceptual design, precision mechanics, and real-world constraints.</p>
-          <p>Through Thalomex I make this experience available to companies that need a sharp engineer quickly — without the overhead of a large firm.</p>
+          <p>Ik ben werktuigbouwkundig ingenieur met de overtuiging dat innovatief ontwerp voortkomt uit praktische ervaring — en uit gewoon zelf dingen maken. Jarenlang werkte ik naast mijn studie hands-on bij Prodrive Technologies, wat mijn aanpak gevormd heeft: praktisch, maakbaar en gericht op wat écht werkt.</p>
+          <p>Ik heb mijn MSc Werktuigbouwkunde afgerond aan de TU/e (beide stages bij EPC en TNO afgesloten met een 9,5) en ben momenteel promovendus bij de vakgroep Control Systems Technology onder Prof. Maarten Steinbuch, met onderzoek op het gebied van precisie-mechatronica voor ASML-gerelateerde hightechsystemen. De vraagstukken die me het meest aanspreken liggen op het snijvlak van conceptontwerp, precisie-engineering en praktische uitvoerbaarheid.</p>
+          <p>Via Thalomex stel ik deze ervaring beschikbaar aan bedrijven die snel een scherpe ingenieur nodig hebben — zonder de overhead van een groot bureau.</p>
 
-          <!-- Datasheet-style stat strip -->
+          <!-- Datasheet-stijl stat-strip -->
           <div class="about-stats-row">
             <div class="stat-cell">
               <div class="stat-nr">PhD</div>
-              <div class="stat-label">Eindhoven University of Technology</div>
+              <div class="stat-label">Technische Universiteit Eindhoven</div>
             </div>
             <div class="stat-cell">
               <div class="stat-nr">6+</div>
-              <div class="stat-label">Years of engineering experience</div>
+              <div class="stat-label">Jaar technische werkervaring</div>
             </div>
             <div class="stat-cell">
               <div class="stat-nr">🏆</div>
@@ -610,12 +601,12 @@
           </div>
 
           <div class="tags">
-            <span class="tag">Mechanical concept development</span>
-            <span class="tag">Mechatronics</span>
+            <span class="tag">Mechanische conceptontwikkeling</span>
+            <span class="tag">Mechatronica</span>
             <span class="tag">CAD / STEP</span>
             <span class="tag">MATLAB</span>
-            <span class="tag">PoC design</span>
-            <span class="tag">Feasibility analysis</span>
+            <span class="tag">PoC-ontwerp</span>
+            <span class="tag">Haalbaarheidsstudie</span>
           </div>
         </div>
 
@@ -625,38 +616,38 @@
 
   <hr class="divider" />
 
-  <!-- ── Experience ── -->
+  <!-- ── Ervaring ── -->
   <section id="experience" class="section">
     <div class="wrap">
-      <p class="section-label fade-in">Experience &amp; publications</p>
-      <h2 class="fade-in">Where my knowledge comes from</h2>
+      <p class="section-label fade-in">Ervaring &amp; publicaties</p>
+      <h2 class="fade-in">Waar mijn kennis vandaan komt</h2>
       <div class="experience-grid">
 
         <div class="exp-card fade-in">
-          <h3>Mechanical Design Engineer <span class="exp-type">(Industry)</span></h3>
-          <div class="org">Prodrive Technologies · 2020–2024 · 4 years</div>
-          <p>Part-time mechanical design engineer at Prodrive Technologies alongside my BSc and MSc studies. Worked on precision mechatronic systems using NX Unigraphics, building practical expertise in design for manufacturability in a high-tech production environment.</p>
+          <h3>Mechanical Design Engineer <span class="exp-type">(Industrie)</span></h3>
+          <div class="org">Prodrive Technologies · 2020–2024 · 4 jaar</div>
+          <p>Parttime werktuigbouwkundig ontwerper bij Prodrive Technologies naast mijn BSc en MSc. Werkte aan precisie-mechatronische systemen in NX Unigraphics en bouwde praktische kennis op in design for manufacturability in een hightech productieomgeving.</p>
         </div>
 
         <div class="exp-card fade-in">
-          <h3>Deployment mechanism for the Keck II telescope's adaptive secondary mirror <span class="exp-type">(MSc Thesis)</span></h3>
-          <div class="org">TNO · 2023–2024 · Grade: 9.5/10</div>
-          <p>Developed a mechanical validation model for the deployment mechanism of the potential adaptive secondary mirror of the Keck II telescope, investigating the structural implications of using CFRP for its backing structure. Graduated with a 9.5.</p>
-          <a class="exp-link" href="https://research.tue.nl/en/studentTheses/architectural-design-of-a-deployment-mechanism-for-the-keck-ii-te/" target="_blank" rel="noopener">View thesis →</a>
+          <h3>Ontplooiingsmechanisme voor de secundaire adaptieve spiegel van de Keck II-telescoop <span class="exp-type">(MSc Scriptie)</span></h3>
+          <div class="org">TNO · 2023–2024 · Cijfer: 9,5/10</div>
+          <p>Architecturaal ontwerp van een ontplooiingsmechanisme voor de potentiële adaptieve secundaire spiegel van de Keck II-telescoop, inclusief onderzoek naar de structurele implicaties van CFRP voor de draagstructuur. Afgestudeerd met een 9,5.</p>
+          <a class="exp-link" href="https://research.tue.nl/en/studentTheses/architectural-design-of-a-deployment-mechanism-for-the-keck-ii-te/" target="_blank" rel="noopener">Scriptie bekijken →</a>
         </div>
 
         <div class="exp-card fade-in">
-          <h3>Design for Precision Engineering <span class="exp-type">(PhD Research)</span></h3>
-          <div class="org">Eindhoven University of Technology · 2024–present</div>
-          <p>Doctoral research within the Control Systems Technology group (Dept. Mechanical Engineering) under Prof. Maarten Steinbuch, in collaboration with ASML. Research at the intersection of precision mechatronics, motion control, and systems engineering.</p>
-          <a class="exp-link" href="https://research.tue.nl/en/persons/bas-huisman/" target="_blank" rel="noopener">TU/e profile →</a>
+          <h3>Design for Precision Engineering <span class="exp-type">(PhD-onderzoek)</span></h3>
+          <div class="org">Technische Universiteit Eindhoven · 2024–heden</div>
+          <p>Promotieonderzoek binnen de vakgroep Control Systems Technology (Faculteit Werktuigbouwkunde) onder leiding van Prof. Maarten Steinbuch, in samenwerking met ASML. Onderzoek op het snijvlak van precisie-mechatronica, bewegingsregeling en systems engineering.</p>
+          <a class="exp-link" href="https://research.tue.nl/en/persons/bas-huisman/" target="_blank" rel="noopener">TU/e-profiel →</a>
         </div>
 
         <div class="exp-card fade-in">
-          <h3>Best Demonstration Award <span class="exp-type">(Prize)</span></h3>
-          <div class="org">Eindhoven University of Technology · September 2025</div>
-          <p>Awarded the Best Demonstration Award at TU/e for outstanding work in demonstrating research results.</p>
-          <a class="exp-link" href="https://research.tue.nl/en/prizes/best-demonstration-award/" target="_blank" rel="noopener">View award →</a>
+          <h3>Best Demonstration Award <span class="exp-type">(Prijs)</span></h3>
+          <div class="org">Technische Universiteit Eindhoven · September 2025</div>
+          <p>Ontvangen van de Best Demonstration Award aan de TU/e voor uitstekend werk in het demonstreren van onderzoeksresultaten.</p>
+          <a class="exp-link" href="https://research.tue.nl/en/prizes/best-demonstration-award/" target="_blank" rel="noopener">Prijs bekijken →</a>
         </div>
 
       </div>
@@ -668,21 +659,18 @@
   <!-- ── Contact ── -->
   <section id="contact" class="section">
 
-    <!-- Precision reticle — decorative background -->
+    <!-- Precisie-reticle — decoratieve achtergrond -->
     <svg class="contact-reticle" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Concentric circles -->
       <circle cx="150" cy="150" r="140" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
       <circle cx="150" cy="150" r="108" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
       <circle cx="150" cy="150" r="76"  stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
       <circle cx="150" cy="150" r="44"  stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
       <circle cx="150" cy="150" r="15"  stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
       <circle cx="150" cy="150" r="3"   fill="rgba(255,255,255,0.2)"/>
-      <!-- Main crosshairs (gap around centre) -->
       <line x1="10"  y1="150" x2="135" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
       <line x1="165" y1="150" x2="290" y2="150" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
       <line x1="150" y1="10"  x2="150" y2="135" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
       <line x1="150" y1="165" x2="150" y2="290" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-      <!-- 30° tick marks on outer ring (outer r=140 → inner r=130) -->
       <line x1="290.0" y1="150.0" x2="280.0" y2="150.0" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
       <line x1="271.2" y1="220.0" x2="262.6" y2="215.0" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
       <line x1="220.0" y1="271.2" x2="215.0" y2="262.6" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
@@ -695,7 +683,6 @@
       <line x1="150.0" y1="10.0"  x2="150.0" y2="20.0"  stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
       <line x1="220.0" y1="28.8"  x2="215.0" y2="37.4"  stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
       <line x1="271.2" y1="80.0"  x2="262.6" y2="85.0"  stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-      <!-- 10° minor ticks (outer r=140 → inner r=135) -->
       <line x1="287.9" y1="174.2" x2="283.5" y2="172.0" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
       <line x1="281.0" y1="197.5" x2="277.1" y2="194.5" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
       <line x1="247.5" y1="244.5" x2="244.1" y2="240.7" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
@@ -720,15 +707,15 @@
 
     <div class="wrap">
       <p class="section-label fade-in">Contact</p>
-      <h2 class="fade-in">Have a technical challenge?</h2>
+      <h2 class="fade-in">Heb je een technische uitdaging?</h2>
       <div class="contact-grid">
         <div class="contact-intro fade-in">
-          <p>Whether you have a concrete project or just want to think something through — send a message. I typically respond within one business day.</p>
-          <p>I work with tech companies, startups and R&amp;D teams that need an experienced engineer quickly.</p>
+          <p>Of je nu een concreet project hebt of gewoon iets wilt doordenken — stuur een bericht. Ik reageer doorgaans binnen één werkdag.</p>
+          <p>Ik werk voor techbedrijven, startups en R&amp;D-teams die snel een ervaren ingenieur nodig hebben.</p>
         </div>
         <div class="contact-details fade-in">
           <div class="contact-row">
-            <span class="lbl">Email</span>
+            <span class="lbl">E-mail</span>
             <a href="mailto:bas@thalomex.nl">bas@thalomex.nl</a>
           </div>
           <div class="contact-row">
@@ -736,7 +723,7 @@
             <a href="https://linkedin.com/in/bas-huisman" target="_blank" rel="noopener">linkedin.com/in/bas-huisman</a>
           </div>
           <div class="contact-row">
-            <span class="lbl">CoC</span>
+            <span class="lbl">KVK</span>
             <span>98206303</span>
           </div>
         </div>
@@ -759,9 +746,9 @@
     const flWhite     = fl.querySelector('.fl-white');
     const flDark      = fl.querySelector('.fl-dark');
 
-    const NAV_H      = 64;  // px (4rem)
-    const LOGO_H     = 28;  // px
-    const HERO_SCALE = 4;   // logo scale factor in hero
+    const NAV_H      = 64;
+    const LOGO_H     = 28;
+    const HERO_SCALE = 4;
 
     function easeInOut(t) {
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
@@ -772,14 +759,12 @@
       const raw   = Math.min(Math.max(window.scrollY / (heroH * 0.55), 0), 1);
       const p     = easeInOut(raw);
 
-      const logoW = flWhite.offsetWidth; // natural width at 28px
+      const logoW = flWhite.offsetWidth;
       const scale = HERO_SCALE - (HERO_SCALE - 1) * p;
 
-      // X: logo center stays horizontally centered at all times — no sweep
       const centerX = window.innerWidth / 2;
       const left    = centerX - (logoW * scale) / 2;
 
-      // Y: logo center moves straight up from screen-center to nav-center
       const startCY = window.innerHeight / 2;
       const endCY   = NAV_H / 2;
       const centerY = startCY + (endCY - startCY) * p;
@@ -790,21 +775,18 @@
       fl.style.transform       = `scale(${scale})`;
       fl.style.transformOrigin = 'left top';
 
-      // White in hero → dark when arrived in nav
       const useDark = p > 0.75;
       flWhite.style.display = useDark ? 'none'  : 'block';
       flDark.style.display  = useDark ? 'block' : 'none';
 
-      // Nav background
       nav.classList.toggle('scrolled', p > 0.5);
     }
 
-    // Run on load (after images have dimensions)
     window.addEventListener('load', updateLogo);
     window.addEventListener('scroll', updateLogo, { passive: true });
     window.addEventListener('resize', updateLogo);
 
-    // Floating contact button — show after scrolling past hero
+    // Zwevende contactknop — zichtbaar na scrollen voorbij hero
     const fab = document.getElementById('contact-fab');
     function updateFab() {
       const heroH = document.getElementById('hero').offsetHeight;
@@ -813,7 +795,7 @@
     window.addEventListener('scroll', updateFab, { passive: true });
     window.addEventListener('load', updateFab);
 
-    // Scroll-triggered fade-ins for sections below hero
+    // Scroll-fade-ins
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
