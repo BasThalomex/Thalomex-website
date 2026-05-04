@@ -80,12 +80,6 @@ if (hamburger && navLinks) {
     cardW = card.offsetWidth + GAP;
   }
 
-  /* How many cards are visible at once — 1 on mobile, 2 on desktop */
-  function getStep() {
-    if (!cardW) return 1;
-    return Math.max(1, Math.round(track.offsetWidth / cardW));
-  }
-
   function scrollTo(idx, animate) {
     track.style.scrollBehavior = animate ? 'smooth' : 'auto';
     track.scrollLeft = idx * cardW;
@@ -144,7 +138,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-/* ── 8. Full-page section snap scroll (desktop ≥721 px only) ──
+/* ── 8. Full-page section snap scroll (desktop >=721 px only) ──
    On mobile, sections are height:auto so native scroll is used.
    ── */
 (function initFullpageScroll() {

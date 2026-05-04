@@ -20,6 +20,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  overflow-x: hidden;
   /* smooth-scroll used by JS scrollTo({ behavior:'smooth' }) */
   scroll-behavior: smooth;
 }
@@ -30,6 +31,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  text-align: justify;
 }
 
 img { display: block; max-width: 100%; }
@@ -44,9 +46,9 @@ img { display: block; max-width: 100%; }
 /* Every section except hero fills exactly one screen height on desktop.
    On mobile (≤720 px) sections become height:auto so long content isn't clipped. */
 .section {
-  height: 100svh;
+  height: 100dvh;
   overflow: hidden;
-  padding: clamp(2rem, 5svh, 4.5rem) 0;
+  padding: max(calc(var(--nav-h) + 0.75rem), clamp(3rem, 6dvh, 5rem)) 0 clamp(1.5rem, 3dvh, 2.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -220,7 +222,7 @@ h2 {
 /* ─── Hero ────────────────────────────────────────────────── */
 #hero {
   background: var(--green);
-  height: 100svh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -326,7 +328,7 @@ h2 {
   background: var(--off-white);
   /* Natural height: fills at least the viewport but never clips card content */
   height: auto;
-  min-height: 100svh;
+  min-height: 100dvh;
   overflow: visible;
   justify-content: flex-start;
 }
@@ -350,7 +352,7 @@ h2 {
   -ms-overflow-style: none;
   padding-bottom: 0.25rem;
   /* Fixed height driven by viewport: fills remaining space below heading */
-  height: clamp(440px, calc(100svh - 210px), 620px);
+  height: clamp(440px, calc(100dvh - 210px), 620px);
   align-items: stretch; /* cards fill track height */
 }
 
@@ -360,13 +362,13 @@ h2 {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.25rem;
   flex-shrink: 0;
 }
 
 .carousel-btn {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: var(--white);
@@ -560,6 +562,7 @@ h2 {
 }
 
 /* ─── About ───────────────────────────────────────────────── */
+#about h2 { margin-bottom: 0.6rem; }
 #about {
   background-color: var(--white);
   background-image: radial-gradient(circle, #d4d4cf 1px, transparent 1px);
@@ -571,7 +574,7 @@ h2 {
   grid-template-columns: 150px 1fr;
   gap: 3rem;
   align-items: start;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
 }
 
 /* ── Photo column ── */
@@ -623,20 +626,21 @@ h2 {
 /* ── Content column ── */
 .about-content p {
   color: var(--muted);
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .about-content p:last-of-type { margin-bottom: 0; }
 
-/* Stats strip */
+/* Stats strip — sits above the bio text */
 .about-stats-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 1.75rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
   background: var(--white);
 }
 
@@ -668,6 +672,68 @@ h2 {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1.5rem;
+}
+
+/* ─── Competences block (within About) ────────────────────── */
+.competences {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.competences-heading {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+
+.competences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 2.5rem;
+}
+
+.competence-group .competence-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--green);
+}
+
+.competence-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.competence-group ul li {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+  padding: 0.18rem 0 0.18rem 1rem;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.competence-group ul li:last-child {
+  border-bottom: none;
+}
+
+.competence-group ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  opacity: 0.5;
+  font-size: 0.75rem;
+  top: 0.35rem;
 }
 
 /* ─── Contact ─────────────────────────────────────────────── */
@@ -758,9 +824,14 @@ footer img    { height: 22px; width: auto; opacity: 0.7; }
 
 /* ─── Responsive: narrow (≤999 px) — 2→1 card column jump ── */
 @media (max-width: 999px) {
-  /* Once the viewport is too narrow for 2 × 456px + 24px gap (= 936px),
-     each card fills the full track width — clean single-card view. */
-  .work-card { flex: 0 0 100%; }
+  /* At this width the viewport is too narrow for 2 × 456px + 24px gap.
+     Constrain the carousel outer to one-card width so the second card
+     sits fully off-screen — cards keep their original 456px width. */
+  .carousel-outer {
+    max-width: min(456px, calc(100vw - 4rem));
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ─── Responsive: mobile (≤720 px) ───────────────────────── */
@@ -769,9 +840,9 @@ footer img    { height: 22px; width: auto; opacity: 0.7; }
   /* Sections: natural height on mobile — no clipping */
   .section {
     height: auto;
-    min-height: 100svh;
+    min-height: 100dvh;
     overflow: visible;
-    padding: 4.5rem 0 3rem;
+    padding: calc(var(--nav-h) + 1rem) 0 3rem;
   }
 
   /* Carousel: let height be natural on mobile (section is already auto) */
@@ -817,6 +888,9 @@ footer img    { height: 22px; width: auto; opacity: 0.7; }
 
   /* Services: stack to 1 col */
   .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* Competences: stack to 1 col on mobile */
+  .competences-grid { grid-template-columns: 1fr; gap: 1rem; }
 
   /* Decorative reticle overflows on small screens */
   .contact-reticle { display: none; }

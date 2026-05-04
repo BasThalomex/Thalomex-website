@@ -16,26 +16,26 @@ var content = {
   /* ── Hero ───────────────────────────────────────────────── */
   hero: {
     label: 'Engineering Consultant',
-    sub:   'From technical question to concrete concept —<br>fast, sharp, and without overhead.',
+    sub:   'From technical question to working hardware',
     cta:   'Get in touch →',
   },
 
   /* ── Services ───────────────────────────────────────────── */
   services: {
     label:   'Services',
-    heading: 'From question to working hardware',
+    heading: 'From technical question to working hardware',
     items: [
       {
         title: 'Feasibility & Concept',
-        text:  'Back-of-the-envelope before anything goes into CAD. I check whether the approach is sound, find the real question behind the ask, and sketch a concept direction — fast.',
+        text:  'Understanding the problem by performing Back-of-the-envelope before anything! I check whether the approach is sound, find the real question behind the ask, and converge to a conceptual direction',
       },
       {
-        title: 'Mechanical Design',
-        text:  'From validated concept to a full 3D model and production-ready drawings. NX Unigraphics, STEP export, supplier specs — packaged so a machine shop can start straight away.',
+        title: 'Detailed Design',
+        text:  'From validated concept to a full 3D model and production-ready drawings.',
       },
       {
-        title: 'PoC & Prototype',
-        text:  'A working prototype you can actually test. I design, specify, order, and assemble — or machine the parts myself when that\'s the fastest path to a result.',
+        title: 'PoC, Prototype, Hardware!',
+        text:  'A working prototype you can actually test.',
       },
     ],
   },
@@ -68,7 +68,7 @@ var content = {
         org:      'TU/e &amp; ASML · ASPE 2025',
         phd:      true,
         title:    'Low-Order Shape Control Through a Deformable Wafer Table — ASPE',
-        text:     'Oral presentation at the ASPE Annual Meeting 2025. Extended abstract on the application of low-order shape control in a prototype wafer table for higher-order correction in wafer scanners, using a stacked LiNbO₃ piezoelectric deformable wafer table.',
+        text:     'Oral presentation at the ASPE Annual Meeting 2025. Extended abstract on the application of low-order shape control in prototype wafer table for higher order correction in wafer scanners. Find the full abstract here: .',
         tags:     ['LiNbO3', 'Wafer Table', 'ASML', 'Zernike polynomials'],
         link:     null,
         linkText: null,
@@ -144,10 +144,10 @@ var content = {
   /* ── About ──────────────────────────────────────────────── */
   about: {
     label:   'About',
-    heading: 'Engineer with a focus on precision',
+    heading: 'Bas Huisman',
     bio: [
-      'Mechanical engineer with a background in precision mechatronics and hands-on design experience at Prodrive Technologies, TNO, and TU/e. MSc from Eindhoven University of Technology, currently PhD candidate in the Precision Engineering group at TU/e.',
-      'Available through Thalomex for companies that need experienced engineering without the overhead.',
+      'Mechanical engineer with a passion for precision mechatronics and hands-on manufacturing. BSc and MSc (Cum Laude) from Eindhoven University of Technology, currently PhD candidate in the Precision Engineering group at TU/e.',
+      'Available through Thalomex for mechatronic and DFM competence',
     ],
     stats: [
       { nr: 'PhD-Candidate',  label: 'Eindhoven University of Technology' },
@@ -163,6 +163,43 @@ var content = {
     ],
     photoAlt:    'Bas Huisman',
     captionName: 'Bas Huisman',
+
+    competences: {
+      heading: 'Competences',
+      groups: [
+        {
+          title: 'Design',
+          items: [
+            'Statically determined design; reasoning in degrees of freedom',
+            'Precision mechanisms using elastic elements (leafsprings, flexures)',
+            'Piezoelectric actuator systems — independent in-plane and out-of-plane control',
+            'Dynamic performance optimisation: low mass, high stiffness structures',
+            'Dimensional metrology integration — capacitive and interferometric sensors',
+            'CAD modelling and production documentation (NX Unigraphics / STEP)',
+          ],
+        },
+        {
+          title: 'Analysis',
+          items: [
+            'Structural mechanics: stress, strain and fatigue',
+            'Finite Element Analysis — static, dynamic and thermal',
+            'Modal analysis and dynamic behaviour modelling (MATLAB)',
+            'Position accuracy and thermo-mechanical stability estimation',
+            'System-level modelling and simulation',
+          ],
+        },
+        {
+          title: 'Process',
+          items: [
+            'Full design cycle: concept → detailed design → prototype → test',
+            'System engineering: reducing complex problems to their essence',
+            'Hands-on manufacturing: machining, assembly and test setup',
+            'Manufacturing documentation for direct handover to suppliers',
+            'Concise technical reporting and to-the-point presentations',
+          ],
+        },
+      ],
+    },
   },
 
   /* ── Contact ────────────────────────────────────────────── */
@@ -170,8 +207,8 @@ var content = {
     label:   'Contact',
     heading: 'Have a technical challenge?',
     intro: [
-      'Whether you have a concrete project or just want to think something through — send a message. I typically respond within one business day.',
-      'I work with tech companies, startups and R&amp;D teams that need an experienced engineer quickly.',
+      'Whether you have a concrete project or just want to think something through, send a message. I typically respond within one business day.',
+      'I work with tech companies, startups and R&amp;D teams in need for mechatronic and/or DFM competence',
     ],
     rows: [
       { label: 'Email',    value: 'bas@thalomex.nl',              link: 'mailto:bas@thalomex.nl'                   },

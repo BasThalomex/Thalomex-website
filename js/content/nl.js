@@ -149,6 +149,43 @@ var content = {
     ],
     photoAlt:    'Bas Huisman',
     captionName: 'Bas Huisman',
+
+    competences: {
+      heading: 'Competenties',
+      groups: [
+        {
+          title: 'Ontwerp',
+          items: [
+            'Statisch bepaald ontwerp; denken in vrijheidsgraden',
+            'Precisie-mechanismen op basis van elastische elementen (bladveringen, flexures)',
+            'Piëzoelektrische actuatorsystemen — onafhankelijke in-plane en out-of-plane regeling',
+            'Dynamische prestatie-optimalisatie: lage massa, hoge stijfheid',
+            'Dimensionele meettechniek — capacitieve en interferometrische sensoren',
+            'CAD-modellering en productiedocumentatie (NX Unigraphics / STEP)',
+          ],
+        },
+        {
+          title: 'Analyse',
+          items: [
+            'Constructiemechanica: spanning, rek en vermoeiing',
+            'Eindige elementen analyse — statisch, dynamisch en thermisch',
+            'Modale analyse en dynamisch gedragsmodellering (MATLAB)',
+            'Nauwkeurigheidsschatting en thermomechanische stabiliteitsbepaling',
+            'Systeemlevel-modellering en simulatie',
+          ],
+        },
+        {
+          title: 'Werkwijze',
+          items: [
+            'Volledige ontwerpcyclus: concept → detailontwerp → prototype → test',
+            'Systeemtechnische aanpak: complexe problemen terugbrengen tot de kern',
+            'Hands-on productie: verspaning, assemblage en meetopstelling',
+            'Productiedocumentatie voor directe overdracht aan leveranciers',
+            'Bondige technische rapportage en heldere presentaties',
+          ],
+        },
+      ],
+    },
   },
 
   /* ── Contact ────────────────────────────────────────────── */

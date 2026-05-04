@@ -3,7 +3,6 @@
 var sectionServices = `
 <section id="services" class="section">
   <div class="wrap">
-    <p class="section-label fade-in">${content.services.label}</p>
     <h2 class="fade-in">${content.services.heading}</h2>
 
     <div class="services-grid">
