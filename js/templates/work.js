@@ -36,9 +36,11 @@ function _renderCard(c) {
         + '<div class="work-card-org">' + c.org + '</div>'
         + phdPill
       + '</div>'
-      + '<h3>' + c.title + '</h3>'
-      + '<p>' + c.text + '</p>'
-      + (linksHtml ? '<div class="work-card-links">' + linksHtml + '</div>' : '')
+      + '<div class="work-card-scroll">'
+        + '<h3>' + c.title + '</h3>'
+        + '<p>' + c.text + '</p>'
+        + (linksHtml ? '<div class="work-card-links">' + linksHtml + '</div>' : '')
+      + '</div>'
       + '<div class="work-card-tags">' + tagsHtml + '</div>'
     + '</div>'
   + '</div>';

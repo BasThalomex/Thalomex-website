@@ -68,7 +68,7 @@ var content = {
         org:      'TU/e &amp; ASML · ASPE 2025',
         phd:      true,
         title:    'Low-Order Shape Control Through a Deformable Wafer Table — ASPE',
-        text:     'Oral presentation at the ASPE Annual Meeting 2025. Extended abstract on the application of low-order shape control in prototype wafer table for higher order correction in wafer scanners. Find the full abstract here: .',
+        text:     'Oral presentation at the ASPE Annual Meeting 2025. Extended abstract on the application of low-order shape control in a prototype wafer table for higher-order correction in wafer scanners, using a stacked LiNbO₃ piezoelectric deformable wafer table.',
         tags:     ['LiNbO3', 'Wafer Table', 'ASML', 'Zernike polynomials'],
         link:     null,
         linkText: null,

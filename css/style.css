@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Thalomex – shared stylesheet
+   Thalomex – stylesheet
    ═══════════════════════════════════════════════════════════ */
 
 /* ─── Tokens ──────────────────────────────────────────────── */
@@ -18,8 +18,10 @@
 
 /* ─── Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html {
-  scroll-behavior: smooth; /* used by JS scrollTo({ behavior:'smooth' }) */
+  /* smooth-scroll used by JS scrollTo({ behavior:'smooth' }) */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -39,6 +41,8 @@ img { display: block; max-width: 100%; }
   padding: 0 2rem;
 }
 
+/* Every section except hero fills exactly one screen height on desktop.
+   On mobile (≤720 px) sections become height:auto so long content isn't clipped. */
 .section {
   height: 100svh;
   overflow: hidden;
@@ -54,7 +58,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green);
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 h2 {
@@ -65,8 +69,6 @@ h2 {
   color: var(--text);
   margin-bottom: 1.25rem;
 }
-
-.divider { border: none; border-top: 1px solid var(--border); }
 
 /* ─── Nav ─────────────────────────────────────────────────── */
 #nav {
@@ -103,7 +105,6 @@ h2 {
   transition: opacity 0.3s ease;
 }
 
-/* Only reveal nav logo once hero has scrolled away */
 #nav.scrolled .nav-logo {
   opacity: 1;
   pointer-events: auto;
@@ -115,7 +116,7 @@ h2 {
   display: block;
 }
 
-/* White logo over hero, dark logo when nav is scrolled */
+/* White logo over hero, dark logo once nav is scrolled */
 .nav-logo .logo-dark  { display: none; }
 .nav-logo .logo-white { display: block; }
 #nav.scrolled .nav-logo .logo-white { display: none; }
@@ -181,10 +182,10 @@ h2 {
 
 .lang-sep { color: rgba(255,255,255,0.2); }
 
-#nav.scrolled .lang-switch a { color: var(--muted); }
+#nav.scrolled .lang-switch a          { color: var(--muted); }
 #nav.scrolled .lang-switch a.active,
-#nav.scrolled .lang-switch a:hover { color: var(--text); }
-#nav.scrolled .lang-sep { color: var(--border); }
+#nav.scrolled .lang-switch a:hover   { color: var(--text); }
+#nav.scrolled .lang-sep              { color: var(--border); }
 
 /* ─── Floating contact button ─────────────────────────────── */
 .contact-fab {
@@ -194,7 +195,6 @@ h2 {
   z-index: 400;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   padding: 0.7rem 1.4rem;
   background: var(--green);
   color: var(--white);
@@ -217,19 +217,6 @@ h2 {
 
 .contact-fab:hover { background: #1a2a1d; }
 
-/* ─── Hero logo (in-page, scrolls with content) ──────────── */
-.hero-logo {
-  margin-bottom: 3rem;
-}
-
-.hero-logo img {
-  width: clamp(160px, 42vw, 440px);
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  opacity: 0.9;
-}
-
 /* ─── Hero ────────────────────────────────────────────────── */
 #hero {
   background: var(--green);
@@ -240,6 +227,18 @@ h2 {
   justify-content: flex-end;
   padding-bottom: 7rem;
   text-align: center;
+}
+
+.hero-logo {
+  margin-bottom: 3rem;
+}
+
+.hero-logo img {
+  width: clamp(160px, 42vw, 440px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.9;
 }
 
 .hero-label {
@@ -261,7 +260,6 @@ h2 {
 .hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   padding: 0.75rem 1.6rem;
   background: var(--white);
   color: var(--green);
@@ -323,27 +321,24 @@ h2 {
   line-height: 1.65;
 }
 
-/* ─── Work (combined projects + experience carousel) ──────── */
+/* ─── Work carousel ───────────────────────────────────────── */
 #work {
   background: var(--off-white);
-  justify-content: flex-start; /* align heading at top, carousel fills rest */
+  /* Natural height: fills at least the viewport but never clips card content */
+  height: auto;
+  min-height: 100svh;
+  overflow: visible;
+  justify-content: flex-start;
 }
 
 #work > .wrap {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
 }
 
-/* Carousel wrapper */
 .carousel-outer {
   position: relative;
   margin-top: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
 }
 
 .carousel-track {
@@ -354,20 +349,19 @@ h2 {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-bottom: 0.25rem;
-  padding-right: 0.25rem;
-  flex: 1;           /* fill carousel-outer height */
-  min-height: 0;
+  /* Fixed height driven by viewport: fills remaining space below heading */
+  height: clamp(440px, calc(100svh - 210px), 620px);
   align-items: stretch; /* cards fill track height */
 }
 
 .carousel-track::-webkit-scrollbar { display: none; }
 
-/* Navigation buttons */
 .carousel-nav {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  flex-shrink: 0;
 }
 
 .carousel-btn {
@@ -392,10 +386,12 @@ h2 {
   color: var(--white);
 }
 
-/* Work card — exactly half the carousel width */
+/* ── Work card ── */
 .work-card {
-  flex: 0 0 calc(50% - 0.75rem);
-  min-width: 0;
+  /* Fixed 456px — exactly 2 fit in the 936px inner wrap at full width.
+     As the viewport narrows the second card scrolls off naturally (no resize).
+     min() prevents the card ever exceeding the visible area on small screens. */
+  flex: 0 0 min(456px, calc(100vw - 64px));
   scroll-snap-align: start;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -406,25 +402,17 @@ h2 {
   transition: border-color 0.2s;
 }
 
-.work-card:hover {
-  border-color: var(--green);
-}
+.work-card:hover { border-color: var(--green); }
 
-/* Card image / visual header */
+/* Card image header — always 16:9 */
 .work-card-img {
-  aspect-ratio: 16 / 9;   /* default; overridden when card fills dynamic height */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--off-white);
   flex-shrink: 0;
   position: relative;
+  /* top corners match card radius; card overflow:hidden clips bottom */
   border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
-}
-
-/* When carousel fills section height, image stretches to fill remaining card space */
-#work .work-card-img {
-  aspect-ratio: unset;
-  flex: 1;
-  min-height: 0;
 }
 
 .work-card-img img {
@@ -437,7 +425,7 @@ h2 {
 
 .work-card:hover .work-card-img img { transform: scale(1.03); }
 
-/* Text-only header for experience cards */
+/* Text-only header (kept for potential future text-type cards) */
 .work-card-img--text {
   display: flex;
   align-items: flex-end;
@@ -453,7 +441,7 @@ h2 {
   line-height: 1.25;
 }
 
-/* Card type badge (overlaid bottom-left of image) */
+/* Badge overlaid bottom-left of image */
 .work-card-badge {
   position: absolute;
   bottom: 0.6rem;
@@ -468,17 +456,54 @@ h2 {
   backdrop-filter: blur(4px);
 }
 
-/* Card body */
+/* Card body — flex column, does not scroll itself */
 .work-card-body {
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1rem 1.25rem 1.25rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-height: 0; /* required for nested flex scroll to work */
+}
+
+/* Scrollable middle zone: title + text + links only */
+.work-card-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.work-card-scroll::-webkit-scrollbar        { width: 4px; }
+.work-card-scroll::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 2px; }
+.work-card-scroll::-webkit-scrollbar-track  { background: transparent; }
+
+.work-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .work-card-org {
   font-size: 0.78rem;
   color: var(--muted);
+}
+
+/* PhD indicator pill */
+.phd-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .work-card-body h3 {
@@ -495,58 +520,43 @@ h2 {
   margin: 0.4rem 0 0;
 }
 
-/* Links appear directly below the text */
+/* Links directly below text */
 .work-card-links {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  margin-top: 0.6rem;
-}
-
-/* Tags always sit at the bottom of the card */
-.work-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: auto;
-  padding-top: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 .work-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
   font-size: 0.78rem;
   font-weight: 500;
   color: var(--green);
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .work-link:hover { text-decoration: underline; }
 
-/* ── PhD indicator (pill only, no border) ── */
-
-.work-card-meta {
+/* Tags pinned at the bottom — scroll div above fills the space */
+.work-card-tags {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding-top: 0.75rem;
 }
 
-.phd-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.15rem 0.5rem;
+/* Shared tag pill (used in both work cards and about section) */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--off-white);
   border-radius: 100px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  background: var(--green);
-  color: rgba(255,255,255,0.92);
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--green);
 }
 
 /* ─── About ───────────────────────────────────────────────── */
@@ -559,9 +569,9 @@ h2 {
 .about-grid {
   display: grid;
   grid-template-columns: 150px 1fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: start;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 /* ── Photo column ── */
@@ -571,7 +581,7 @@ h2 {
   align-items: stretch;
 }
 
-/* Engineering drawing frame: corner L-brackets via CSS gradients */
+/* Engineering drawing frame: L-bracket corners via CSS gradients */
 .photo-frame {
   position: relative;
   padding: 10px;
@@ -594,7 +604,7 @@ h2 {
   aspect-ratio: 3 / 4;
 }
 
-/* Title-block caption — drawing title block style */
+/* Title-block caption */
 .photo-caption {
   border: 1px solid var(--border);
   border-top: none;
@@ -619,14 +629,14 @@ h2 {
 
 .about-content p:last-of-type { margin-bottom: 0; }
 
-/* Horizontal stats strip — component datasheet style */
+/* Stats strip */
 .about-stats-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-top: 2rem;
+  margin-top: 1.75rem;
   background: var(--white);
 }
 
@@ -639,9 +649,9 @@ h2 {
 .stat-cell:last-child { border-right: none; }
 
 .stat-nr {
-  font-size: 1.9rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--green);
   line-height: 1;
   margin-bottom: 0.25rem;
@@ -657,17 +667,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1.75rem;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background: var(--off-white);
-  border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--green);
+  margin-top: 1.5rem;
 }
 
 /* ─── Contact ─────────────────────────────────────────────── */
@@ -695,12 +695,15 @@ h2 {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: start;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   position: relative;
   z-index: 1;
 }
 
-.contact-intro p { color: rgba(255,255,255,0.55); margin-bottom: 0.75rem; }
+.contact-intro p {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.75rem;
+}
 
 .contact-details { display: flex; flex-direction: column; }
 
@@ -723,11 +726,15 @@ h2 {
 }
 
 .contact-row span { color: rgba(255,255,255,0.8); font-weight: 500; }
-.contact-row a { color: var(--white); text-decoration: none; font-weight: 500; }
+.contact-row a    { color: var(--white); text-decoration: none; font-weight: 500; }
 .contact-row a:hover { color: rgba(255,255,255,0.7); }
 
 /* ─── Footer ──────────────────────────────────────────────── */
-footer { background: var(--green); padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.08); }
+footer {
+  background: var(--green);
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
 
 .footer-inner {
   display: flex;
@@ -737,8 +744,8 @@ footer { background: var(--green); padding: 2.5rem 0; border-top: 1px solid rgba
   gap: 1rem;
 }
 
-footer img { height: 22px; width: auto; opacity: 0.7; }
-.footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+footer img    { height: 22px; width: auto; opacity: 0.7; }
+.footer-copy  { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
 /* ─── Fade-in ─────────────────────────────────────────────── */
 .fade-in {
@@ -749,11 +756,28 @@ footer img { height: 22px; width: auto; opacity: 0.7; }
 
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── Responsive ──────────────────────────────────────────── */
-@media (max-width: 720px) {
-  .section { padding: 4rem 0; }
+/* ─── Responsive: narrow (≤999 px) — 2→1 card column jump ── */
+@media (max-width: 999px) {
+  /* Once the viewport is too narrow for 2 × 456px + 24px gap (= 936px),
+     each card fills the full track width — clean single-card view. */
+  .work-card { flex: 0 0 100%; }
+}
 
-  /* Nav: show hamburger, collapse links */
+/* ─── Responsive: mobile (≤720 px) ───────────────────────── */
+@media (max-width: 720px) {
+
+  /* Sections: natural height on mobile — no clipping */
+  .section {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    padding: 4.5rem 0 3rem;
+  }
+
+  /* Carousel: let height be natural on mobile (section is already auto) */
+  .carousel-track { height: auto; }
+
+  /* Nav: hamburger + collapsible links */
   .hamburger { display: block; }
 
   .nav-links {
@@ -769,39 +793,31 @@ footer img { height: 22px; width: auto; opacity: 0.7; }
     backdrop-filter: blur(8px);
   }
 
-  .nav-links.open { display: flex; }
+  .nav-links.open     { display: flex; }
+  .nav-links.open a   { color: var(--text); }
 
-  /* When menu is open and nav is transparent (over hero), use dark links */
-  .nav-links.open a { color: var(--text); }
-
-  #nav.scrolled .nav-links { background: rgba(255,255,255,0.98); }
-
-  /* About: stack photo above text */
+  /* About: stack photo above text, keep photo small */
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+    margin-top: 2rem;
   }
 
-  .about-photo-col {
-    max-width: 140px; /* keep photo small on mobile too */
-  }
+  .about-photo-col { max-width: 130px; }
 
-  /* Stats: 3 cols still fine at mobile, or wrap to 1 col */
+  /* Stats: stack to 1 col */
   .about-stats-row {
     grid-template-columns: 1fr;
   }
-  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell          { border-right: none; border-bottom: 1px solid var(--border); }
   .stat-cell:last-child { border-bottom: none; }
 
-  /* Contact: stack */
-  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  /* Contact: stack columns */
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
 
-  /* Services: stack on mobile */
-  .services-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  /* Services: stack to 1 col */
+  .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 
-  /* Work carousel: single card full width on mobile */
-  .work-card { flex: 0 0 100%; }
-
-  /* Reticle: hide on small screens (it overflows) */
+  /* Decorative reticle overflows on small screens */
   .contact-reticle { display: none; }
 }
