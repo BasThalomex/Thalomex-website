@@ -1,4 +1,4 @@
-/* ── Work template (language-agnostic) ─────────────────────── */
+/* v0.2.5 – Work template (language-agnostic) ─────────────────────── */
 
 /* Renders one work card from a content.work.cards[] entry */
 function _renderCard(c) {

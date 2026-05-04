@@ -1,4 +1,4 @@
-/* ── Services template (language-agnostic) ───────────────── */
+/* v0.2.5 – Services template (language-agnostic) ───────────────── */
 
 var sectionServices = `
 <section id="services" class="section">

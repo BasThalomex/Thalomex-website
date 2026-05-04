@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   THALOMEX — English content
+   THALOMEX — English content  |  v0.2.5
    Edit this file to update all website text.
    ═══════════════════════════════════════════════════════════ */
 
@@ -70,7 +70,7 @@ var content = {
         badge:    'Conference · Nov 2025',
         org:      'TU/e &amp; ASML · ASPE 2025',
         phd:      true,
-        title:    'Low-Order Shape Control Through a Deformable Wafer Table — ASPE',
+        title:    'Low-Order Shape Control Through a Deformable Wafer Table (ASPE)',
         text:     'Oral presentation at the ASPE Annual Meeting 2025. Extended abstract on applying low-order shape control in a prototype wafer table for higher-order correction in wafer scanners.',
         tags:     ['LiNbO3', 'Wafer Table', 'ASML', 'Zernike polynomials'],
         link:     null,
@@ -83,7 +83,7 @@ var content = {
         badge:    'Conference · Sept 2025',
         org:      'TU/e &amp; ASML · DSPE 2025',
         phd:      true,
-        title:    'Prototype Development of a Deformable Wafer Table — DSPE',
+        title:    'Prototype Development of a Deformable Wafer Table (DSPE)',
         text:     'Oral presentation and live demonstration at the DSPE Conference 2025. Extended abstract on a prototype six-DoF deformable wafer table using stacked LiNbO₃ piezoelectric layers with independent control over in- and out-of-plane actuation. Awarded: DSPE Best Demonstration 2025.',
         tags:     ['Precision mechatronics', 'Piezo', 'ASML', 'Best Demo Award'],
         link:     'https://research.tue.nl/en/prizes/best-demonstration-award/',

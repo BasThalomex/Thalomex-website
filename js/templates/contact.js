@@ -1,4 +1,4 @@
-/* ── Contact template (language-agnostic) ───────────────────── */
+/* v0.2.5 – Contact template (language-agnostic) ───────────────────── */
 var sectionContact = `
 <section id="contact" class="section">
 

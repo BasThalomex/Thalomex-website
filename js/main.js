@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Thalomex – main.js
+   Thalomex – main.js  |  v0.2.5
    Assembles sections, sets up nav, FAB, hamburger,
    carousel, and scroll-snap.
    ═══════════════════════════════════════════════════════════ */

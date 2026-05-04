@@ -1,4 +1,4 @@
-/* ── About template (language-agnostic) ─────────────────────── */
+/* v0.2.5 – About template (language-agnostic) ─────────────────────── */
 var sectionAbout = `
 <section id="about" class="section">
   <div class="wrap">

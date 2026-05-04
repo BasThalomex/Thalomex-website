@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   THALOMEX — Nederlandse content
+   THALOMEX — Nederlandse content  |  v0.2.5
    Bewerk dit bestand om alle websiteteksten aan te passen.
    ═══════════════════════════════════════════════════════════ */
 

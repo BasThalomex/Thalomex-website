@@ -1,4 +1,4 @@
-/* ── Hero template (language-agnostic) ─────────────────────── */
+/* v0.2.5 – Hero template (language-agnostic) ─────────────────────── */
 var sectionHero = `
 <section id="hero">
   <div class="hero-text">
