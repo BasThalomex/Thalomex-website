@@ -214,7 +214,7 @@ var content = {
       'I work with tech companies, startups and R&amp;D teams that need mechatronic design or DFM expertise.',
     ],
     rows: [
-      { label: 'Email',    value: 'bas@thalomex.nl',              link: 'mailto:bas@thalomex.nl'                   },
+      { label: 'Email',    value: 'bas.huisman@thalomex.nl',              link: 'mailto:bas.huisman@thalomex.nl'                   },
       { label: 'LinkedIn', value: 'linkedin.com/in/bas-huisman',  link: 'https://linkedin.com/in/bas-huisman'      },
       { label: 'CoC',      value: '98206303',                     link: null                                       },
     ],

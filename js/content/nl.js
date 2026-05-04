@@ -214,7 +214,7 @@ var content = {
       'Ik werk met techbedrijven, startups en R&amp;D-teams die mechatronisch ontwerp of DFM-kennis nodig hebben.',
     ],
     rows: [
-      { label: 'E-mail',   value: 'bas@thalomex.nl',              link: 'mailto:bas@thalomex.nl'                   },
+      { label: 'E-mail',   value: 'bas.huisman@thalomex.nl',              link: 'mailto:bas.huisman@thalomex.nl'                   },
       { label: 'LinkedIn', value: 'linkedin.com/in/bas-huisman',  link: 'https://linkedin.com/in/bas-huisman'      },
       { label: 'KvK',      value: '98206303',                     link: null                                       },
     ],
