@@ -138,41 +138,125 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-/* ── 8. Full-page section snap scroll (desktop >=721 px only) ──
-   On mobile, sections are height:auto so native scroll is used.
+/* ── 8. Full-page section snap scroll ─────────────────────────
+   Desktop (>=721px): wheel-driven hard snap.
+   Mobile  (<721px):  touch-driven snap with 30% threshold.
+     – Tall sections (overflow): first swipe reaches the far edge;
+       a second swipe past the threshold crosses to the next section.
+     – Weak swipe (<30% vh): springs back to the current boundary.
    ── */
-(function initFullpageScroll() {
-  const DESKTOP_MIN = 721; // matches CSS breakpoint + 1
+(function initSnapScroll() {
+  const DESKTOP_MIN  = 721;
+  const THRESHOLD    = 0.30;   // fraction of vh required to cross a boundary
+  const LOCK_MS      = 650;
 
   const SECTIONS = ['#hero', '#services', '#work', '#about', '#contact']
     .map(id => document.querySelector(id)).filter(Boolean);
 
   let animating = false;
-  const LOCK_MS = 750;
 
-  /* Find which section's top is closest to the viewport top */
+  /* Which section index is currently snapped (top closest to viewport top) */
   function nearest() {
     let best = 0, min = Infinity;
-    SECTIONS.forEach((s, i) => {
-      const d = Math.abs(s.getBoundingClientRect().top);
+    SECTIONS.forEach(function(s, i) {
+      var d = Math.abs(s.getBoundingClientRect().top);
       if (d < min) { min = d; best = i; }
     });
     return best;
   }
 
-  function goTo(idx) {
-    if (idx < 0 || idx >= SECTIONS.length || animating) return;
+  /* Smooth-scroll to an absolute page position */
+  function snapTo(scrollTop) {
     animating = true;
-    window.scrollTo({ top: SECTIONS[idx].offsetTop, behavior: 'smooth' });
-    setTimeout(() => { animating = false; }, LOCK_MS);
+    window.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+    setTimeout(function() { animating = false; }, LOCK_MS);
   }
 
-  /* Wheel — desktop only; let horizontal scroll pass (carousel) */
-  window.addEventListener('wheel', function (e) {
+  /* Helpers for a section's page-coordinate bounds */
+  function secTop(s)    { return s.offsetTop; }
+  function secBottom(s) { return s.offsetTop + s.offsetHeight; }
+  function secOverflow(s) {
+    return Math.max(0, s.offsetHeight - window.innerHeight);
+  }
+
+  /* ── Desktop: wheel ── */
+  window.addEventListener('wheel', function(e) {
     if (window.innerWidth < DESKTOP_MIN) return;
     if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
     e.preventDefault();
-    if (!animating) goTo(nearest() + (e.deltaY > 0 ? 1 : -1));
+    if (animating) return;
+    var idx = nearest();
+    snapTo(SECTIONS[idx + (e.deltaY > 0 ? 1 : -1)]
+      ? SECTIONS[idx + (e.deltaY > 0 ? 1 : -1)].offsetTop
+      : SECTIONS[idx].offsetTop);
   }, { passive: false });
+
+  /* ── Mobile: touch ── */
+  var touchStartY   = 0;
+  var touchStartScroll = 0;
+
+  document.addEventListener('touchstart', function(e) {
+    if (window.innerWidth >= DESKTOP_MIN) return;
+    touchStartY      = e.touches[0].clientY;
+    touchStartScroll = window.scrollY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (window.innerWidth >= DESKTOP_MIN || animating) return;
+
+    var endY      = e.changedTouches[0].clientY;
+    var swipe     = touchStartY - endY;          // +up / −down
+    var vh        = window.innerHeight;
+    var threshold = vh * THRESHOLD;
+
+    var idx     = nearest();
+    var sec     = SECTIONS[idx];
+    var ovfl    = secOverflow(sec);
+    var intoSec = window.scrollY - secTop(sec);  // how far scrolled into this section
+
+    /* Is the user at the top or bottom edge of this section? */
+    var atTop    = intoSec <= 4;
+    var atBottom = ovfl <= 4 || (ovfl - intoSec) <= 4;
+
+    if (Math.abs(swipe) < threshold) {
+      /* ── Weak swipe: bounce back to nearest edge ── */
+      if (ovfl > 4) {
+        /* Snap to whichever edge we're closest to */
+        snapTo(intoSec < ovfl / 2
+          ? secTop(sec)
+          : secTop(sec) + ovfl);
+      } else {
+        snapTo(secTop(sec));
+      }
+      return;
+    }
+
+    if (swipe > 0) {
+      /* ── Swipe UP (forward) ── */
+      if (!atBottom) {
+        /* Still content below — scroll to bottom of this section first */
+        snapTo(secTop(sec) + ovfl);
+      } else {
+        /* At bottom edge: advance to next section */
+        var next = SECTIONS[idx + 1];
+        snapTo(next ? secTop(next) : secTop(sec) + ovfl);
+      }
+    } else {
+      /* ── Swipe DOWN (back) ── */
+      if (!atTop) {
+        /* Still content above — scroll back to top of this section */
+        snapTo(secTop(sec));
+      } else {
+        /* At top edge: go to previous section (land at its bottom if it overflows) */
+        var prev = SECTIONS[idx - 1];
+        if (prev) {
+          var prevOvfl = secOverflow(prev);
+          snapTo(secTop(prev) + prevOvfl);
+        } else {
+          snapTo(secTop(sec));
+        }
+      }
+    }
+  }, { passive: true });
 
 })();

@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════
    THALOMEX — Nederlandse content
-   Bewerk dit bestand om alle websitetekst bij te werken.
+   Bewerk dit bestand om alle websiteteksten aan te passen.
    ═══════════════════════════════════════════════════════════ */
 
 var content = {
 
-  /* ── Navigatie ──────────────────────────────────────────── */
+  /* ── Navigatie ───────────────────────────────────────────── */
   nav: {
     work:    'Werk',
     about:   'Over mij',
@@ -16,61 +16,78 @@ var content = {
   /* ── Hero ───────────────────────────────────────────────── */
   hero: {
     label: 'Engineering Consultant',
-    sub:   'Van technische vraag tot concreet concept —<br>snel, scherp en zonder overhead.',
+    sub:   'Van technische vraag tot werkend prototype',
     cta:   'Neem contact op →',
   },
 
   /* ── Diensten ───────────────────────────────────────────── */
   services: {
     label:   'Diensten',
-    heading: 'Van vraag naar werkend prototype',
+    heading: 'Van technische vraag tot werkend prototype',
     items: [
       {
+        img:   'img/feasibility.jpg',
         title: 'Haalbaarheid & Concept',
-        text:  'Back-of-the-envelope voordat er iets in CAD gaat. Ik check of de aanpak klopt, achterhaal de vraag achter de vraag en schets snel een conceptrichting.',
+        text:  'Staat de fysica het toe? Klopt de aanpak? Kan het simpeler? Ik reken de haalbaarheid snel na en kom tot een concreet concept voordat er iets de CAD in gaat.',
       },
       {
+        img:   'img/detailed_design.jpg',
         title: 'Mechanisch Ontwerp',
-        text:  'Van uitgewerkt concept naar volledig 3D-model en productietekeningen. NX Unigraphics, STEP-export, leveranciersspecificaties — kant-en-klaar voor een machinebedrijf.',
+        text:  'Als het concept staat, werk ik het volledig uit. 3D-model, productietekeningen, toleranties en leveranciersdocumentatie. Direct klaar voor productie.',
       },
       {
+        img:   'img/poc_proto.jpg',
         title: 'PoC & Prototype',
-        text:  'Een werkend prototype dat je kunt testen. Ik ontwerp, specificeer, bestel en assembleer — of verspaan de onderdelen zelf als dat de snelste weg naar een resultaat is.',
+        text:  'Het deel dat écht vertelt of het werkt. Ik ontwerp op maakbaarheid, verspaan onderdelen waar nodig en zet alles samen tot een prototype dat je kunt testen.',
       },
     ],
   },
 
-  /* ── Werk-carousel ──────────────────────────────────────── */
+  /* ── Werk carousel ──────────────────────────────────────── */
   work: {
     label:   'Werk &amp; ervaring',
     heading: 'Projecten, publicaties &amp; achtergrond',
 
+    /*
+     * Elk kaartje heeft nodig:
+     *   type       : 'image' | 'text-header'
+     *   image      : pad naar afbeelding              (alleen voor type:'image')
+     *   imageAlt   : alt-tekst                        (alleen voor type:'image')
+     *   headerText : tekst in donkere header          (alleen voor type:'text-header', gebruik <br> voor regeleinden)
+     *   badge      : klein label over afbeelding/header
+     *   org        : organisatie + jaarstring
+     *   title      : koptekst kaartje
+     *   text       : alineatekst
+     *   tags       : array van tags
+     *   link       : URL of null
+     *   linkText   : linktekst of null
+     */
     cards: [
       {
         type:     'image',
         image:    'img/cover-aspe.jpg',
-        imageAlt: 'ASPE conferentiepaper omslag',
-        badge:    'Conferentie · nov 2025',
+        imageAlt: 'Omslag ASPE-conferentiepaper',
+        badge:    'Conferentie · nov. 2025',
         org:      'TU/e &amp; ASML · ASPE 2025',
         phd:      true,
-        title:    'Low-Order Shape Control via een Deformeerbare Wafertafel — ASPE',
-        text:     'Mondelinge presentatie op de ASPE Annual Meeting 2025. Paper over laag-orde vormregeling in fotolithografiescanner-waferstages via een meerlagige piëzoelektrische deformeerbare wafertafel met onafhankelijke in-plane en out-of-plane actuatie.',
-        tags:     ['Precisie-mechatronica', 'Piezo', 'ASML'],
+        title:    'Low-Order Shape Control via een Deformeerbare Wafertafel (ASPE)',
+        text:     'Mondelinge presentatie op de ASPE Annual Meeting 2025. Extended abstract over low-order shape control in een prototype wafertafel voor hogere-orde correctie in wafer scanners.',
+        tags:     ['LiNbO3', 'Wafertafel', 'ASML', 'Zernike-polynomen'],
         link:     null,
         linkText: null,
       },
       {
         type:     'image',
         image:    'img/cover-dspe.jpg',
-        imageAlt: 'DSPE conferentiepaper omslag',
-        badge:    'Conferentie · sept 2025',
+        imageAlt: 'Omslag DSPE-conferentiepaper',
+        badge:    'Conferentie · sept. 2025',
         org:      'TU/e &amp; ASML · DSPE 2025',
         phd:      true,
-        title:    'Prototypeontwikkeling van een Deformeerbare Wafertafel — DSPE',
-        text:     'Mondelinge presentatie en live demonstratie op de DSPE-conferentie 2025. Extended abstract over een zes-DoF deformeerbare wafertafel met gestapelde LiNbO₃-piëzolagen. Bekroond met de Best Demonstration Award &#127942;.',
-        tags:     ['Precisie-mechatronica', 'Piezo', 'ASML', 'Best Demo Award'],
+        title:    'Prototypeontwikkeling van een Deformeerbare Wafertafel (DSPE)',
+        text:     'Presentatie en live demonstratie op de DSPE Conference 2025. Extended abstract over een prototype 6-VG deformeerbare wafertafel met gestapelde LiNbO₃-piëzo-lagen voor onafhankelijke in-vlak- en uit-vlak-actuatie. Onderscheiding: DSPE Best Demonstration 2025.',
+        tags:     ['Precisie mechatronica', 'Piëzo', 'ASML', 'Best Demo Award'],
         link:     'https://research.tue.nl/en/prizes/best-demonstration-award/',
-        linkText: 'Prijs bekijken →',
+        linkText: 'Bekijk onderscheiding →',
       },
       {
         type:     'image',
@@ -79,48 +96,48 @@ var content = {
         badge:    'Ontwerp · juni 2025',
         org:      'TU/e &amp; ASML · 2024–heden',
         phd:      true,
-        title:    'Fijn-instelbare Capacitieve Sensorhouder',
-        text:     'Ontwerp van een precisie-instelbare houder voor capacitieve verplaatsingssensoren, voor nauwkeurige oppervlaktevormmetingen op de deformeerbare substraattafel.',
-        tags:     ['Precisie-mechanica', 'Sensorintegratie', 'CAD / NX'],
+        title:    'Fijn-Instelbare Capacitieve Sensorhouder',
+        text:     'Precisie-instelbare bevestiging voor capacitieve verplaatsingssensoren, voor nauwkeurige positionering bij oppervlaktevormmetingen op de deformeerbare substraattafel.',
+        tags:     ['Precisie mechanica', 'Sensorintegratie', 'CAD'],
         link:     null,
         linkText: null,
       },
       {
         type:     'image',
         image:    'img/cover-prototype.jpg',
-        imageAlt: 'Mk.4 prototype deformeerbare substraattafel',
+        imageAlt: 'Mk.IV prototype deformeerbare substraattafel',
         badge:    'Prototype · maart 2025',
         org:      'TU/e &amp; ASML · 2024–heden',
         phd:      true,
         title:    'Mk.4 Prototype Deformeerbare Substraattafel',
-        text:     'Mechanisch ontwerp en realisatie van de vierde-generatie prototypetafel voor een deformeerbaar waferstage, met gestapelde piëzoelektrische actuatoren voor onafhankelijke in-plane en out-of-plane vormregeling.',
-        tags:     ['Precisie-mechanica', 'Piezo', 'Prototype', 'ASML'],
+        text:     'Mechanisch ontwerp en realisatie van het vierde-generatie prototype voor een deformeerbaar waferplatform, met gestapelde piëzo-actuatoren voor onafhankelijke in-vlak- en uit-vlak-vormbesturing.',
+        tags:     ['Precisie mechanica', 'Piëzo', 'Prototype', 'ASML'],
         link:     null,
         linkText: null,
       },
       {
         type:     'image',
         image:    'img/cover-graduation-web.jpg',
-        imageAlt: 'MSc scriptie omslag – Keck II ontplooiingsmechanisme',
-        badge:    'MSc Scriptie · 9,5/10',
-        org:      'TNO · mei 2023–mrt 2024',
-        title:    'Ontplooiingsmechanisme voor de Secundaire Spiegel van de Keck II-telescoop',
-        text:     'Architecturaal ontwerp van een ontplooiingsmechanisme voor de adaptieve secundaire spiegel van de Keck II-telescoop, inclusief structurele analyse van CFRP voor de draagstructuur. Cijfer: 9,5.',
-        tags:     ['Ruimtemechanismen', 'CFRP', 'Structuuranalyse'],
+        imageAlt: 'Omslag MSc-scriptie, Keck II-uitrijmechanisme',
+        badge:    'MSc-scriptie · 9,5/10',
+        org:      'TNO · mei 2023–mrt. 2024',
+        title:    'Uitrijmechanisme voor de Adaptieve Secundaire Spiegel van de Keck II Telescoop',
+        text:     'Architectuurontwerp van een uitrijmechanisme voor de mogelijke adaptieve secundaire spiegel van de Keck II-telescoop, inclusief constructieve analyse van koolstofvezel (CFRP) voor de steunstructuur. Cijfer: 9,5.',
+        tags:     ['Ruimtemechanismen', 'CFRP', 'Constructieve analyse'],
         links: [
-          { url: 'https://research.tue.nl/en/studentTheses/architectural-design-of-a-deployment-mechanism-for-the-keck-ii-te/', text: 'Scriptie bekijken →' },
+          { url: 'https://research.tue.nl/en/studentTheses/architectural-design-of-a-deployment-mechanism-for-the-keck-ii-te/', text: 'Bekijk scriptie →' },
           { url: 'MICRONIEK_URL', text: 'Microniek artikel →' },
         ],
       },
       {
         type:     'image',
         image:    'img/cover-internship-web.jpg',
-        imageAlt: 'Fiber Tensile Tester stageverslag omslag',
+        imageAlt: 'Omslag stageverslag vezel-trekproefmachine',
         badge:    'Stage · 9,5/10',
-        org:      'TU/e – EPC Lab · Jan–apr 2023',
-        title:    'Ontwerp &amp; realisatie van een verbeterde Fiber Tensile Tester',
-        text:     'Ontworpen en volledig gerealiseerd — inclusief het zelf verspanen van alle onderdelen. Het project omvatte de volledige cyclus van concept via productie tot een werkende meetopstelling in het TU/e-lab voor Mechanics of Materials. Cijfer: 9,5/10.',
-        tags:     ['Machineontwerp', 'Verspaning', 'Realisatie', 'Mechanics of Materials'],
+        org:      'TU/e – EPC Lab · jan.–apr. 2023',
+        title:    'Ontwerp &amp; Realisatie van een Verbeterde Vezel-Trekproefmachine',
+        text:     'Zelf ontworpen en volledig gebouwd: een verbeterde trekproefmachine voor vezels, inclusief het verspanen van alle onderdelen. Van concept via productie tot een werkende meetopstelling in het Mechanics of Materials-lab van de TU/e. Cijfer: 9,5/10.',
+        tags:     ['Machineontwerp', 'Verspanen', 'Realisatie', 'Mechanics of Materials'],
         link:     null,
         linkText: null,
       },
@@ -130,22 +147,22 @@ var content = {
   /* ── Over mij ───────────────────────────────────────────── */
   about: {
     label:   'Over mij',
-    heading: 'Ingenieur met een focus op precisie',
+    heading: 'Bas Huisman',
     bio: [
-      'Werktuigbouwkundig ingenieur met een achtergrond in precisie-mechatronica en hands-on ontwerpervaring bij Prodrive Technologies, TNO en TU/e. MSc van de Technische Universiteit Eindhoven, momenteel promovendus bij de vakgroep Precision Engineering.',
-      'Beschikbaar via Thalomex voor bedrijven die snel een ervaren ingenieur nodig hebben — zonder de overhead van een groot bureau.',
+      'Werktuigbouwkundig ingenieur met een focus op precisie mechatronica en praktijkgerichte fabricage. BSc en MSc (Cum Laude) aan de TU Eindhoven, momenteel promovendus in de groep Precision Engineering.',
+      'Via Thalomex neem ik naast mijn promotieonderzoek externe opdrachten aan. Ik werk met techbedrijven, startups en R&amp;D-teams die mechatronisch ontwerp of DFM-kennis nodig hebben.',
     ],
     stats: [
-      { nr: 'PhD-kandidaat', label: 'Technische Universiteit Eindhoven' },
-      { nr: '6+',            label: 'Jaar technische werkervaring'      },
+      { nr: 'PhD',  label: 'Technische Universiteit Eindhoven' },
+      { nr: '6+',   label: 'Jaar ervaring in de industrie'     },
     ],
     tags: [
       'Mechanische conceptontwikkeling',
       'Mechatronica',
       'CAD / STEP',
-      'MATLAB',
+      
       'PoC-ontwerp',
-      'Haalbaarheidsstudie',
+      'Haalbaarheidsanalyse',
     ],
     photoAlt:    'Bas Huisman',
     captionName: 'Bas Huisman',
@@ -156,32 +173,32 @@ var content = {
         {
           title: 'Ontwerp',
           items: [
-            'Statisch bepaald ontwerp; denken in vrijheidsgraden',
-            'Precisie-mechanismen op basis van elastische elementen (bladveringen, flexures)',
-            'Piëzoelektrische actuatorsystemen — onafhankelijke in-plane en out-of-plane regeling',
+            'Statisch bepaald ontwerp; redeneren in vrijheidsgraden',
+            'Precisiemechanismen met elastische elementen (bladveren, flexures)',
+            'Piëzo-elektrische actuatorsystemen',
             'Dynamische prestatie-optimalisatie: lage massa, hoge stijfheid',
-            'Dimensionele meettechniek — capacitieve en interferometrische sensoren',
-            'CAD-modellering en productiedocumentatie (NX Unigraphics / STEP)',
+            'Integratie van dimensionale metrologie',
+            'CAD-modelleren en productiedocumentatie',
           ],
         },
         {
           title: 'Analyse',
           items: [
             'Constructiemechanica: spanning, rek en vermoeiing',
-            'Eindige elementen analyse — statisch, dynamisch en thermisch',
-            'Modale analyse en dynamisch gedragsmodellering (MATLAB)',
-            'Nauwkeurigheidsschatting en thermomechanische stabiliteitsbepaling',
-            'Systeemlevel-modellering en simulatie',
+            'Eindige-elementenmethode: statisch, dynamisch, thermisch en multi-fysisch',
+            'Modaalanalyse en dynamisch gedragsmodellering',
+            'Positienauwkeurigheid en thermo-mechanische stabiliteitsschatting',
+            'Systeemmodellering en simulatie',
           ],
         },
         {
           title: 'Werkwijze',
           items: [
             'Volledige ontwerpcyclus: concept → detailontwerp → prototype → test',
-            'Systeemtechnische aanpak: complexe problemen terugbrengen tot de kern',
-            'Hands-on productie: verspaning, assemblage en meetopstelling',
+            'Systems engineering: complexe problemen terugbrengen tot de kern',
+            'Hands-on fabricage: verspanen, assemblage en testopstelling',
             'Productiedocumentatie voor directe overdracht aan leveranciers',
-            'Bondige technische rapportage en heldere presentaties',
+            'Bondige technische rapportage en to-the-point presentaties',
           ],
         },
       ],
@@ -191,15 +208,15 @@ var content = {
   /* ── Contact ────────────────────────────────────────────── */
   contact: {
     label:   'Contact',
-    heading: 'Heb je een technische uitdaging?',
+    heading: 'Een technische uitdaging?',
     intro: [
-      'Of je nu een concreet project hebt of gewoon iets wilt doordenken — stuur een bericht. Ik reageer doorgaans binnen één werkdag.',
-      'Ik werk voor techbedrijven, startups en R&amp;D-teams die snel een ervaren ingenieur nodig hebben.',
+      'Of je nu een concreet project hebt of gewoon iets wilt doordenken, stuur gerust een berichtje. Ik reageer doorgaans binnen één werkdag.',
+      'Ik werk met techbedrijven, startups en R&amp;D-teams die mechatronisch ontwerp of DFM-kennis nodig hebben.',
     ],
     rows: [
-      { label: 'E-mail',   value: 'bas@thalomex.nl',             link: 'mailto:bas@thalomex.nl'              },
-      { label: 'LinkedIn', value: 'linkedin.com/in/bas-huisman', link: 'https://linkedin.com/in/bas-huisman' },
-      { label: 'KVK',      value: '98206303',                    link: null                                  },
+      { label: 'E-mail',   value: 'bas@thalomex.nl',              link: 'mailto:bas@thalomex.nl'                   },
+      { label: 'LinkedIn', value: 'linkedin.com/in/bas-huisman',  link: 'https://linkedin.com/in/bas-huisman'      },
+      { label: 'KvK',      value: '98206303',                     link: null                                       },
     ],
   },
 
